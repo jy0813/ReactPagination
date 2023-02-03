@@ -1,0 +1,35 @@
+.table {
+  width: 120rem;
+  table-layout: fixed;
+  border-collapse: collapse;;
+  border:0.1rem solid #ccc
+}
+
+.table thead th {
+  padding: 0 1.2rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  border: 1px solid #ccc;
+}
+
+.table thead th:first-of-type {
+  width: 5%;
+}
+
+.table thead th:nth-of-type(2) {
+  width: 35%;
+}
+
+.table thead th:last-of-type {
+  width: 60%;
+}
+
+.table tbody td {
+  padding: 1rem 1.2rem;
+  font-size: 1.4rem;
+  border:0.1rem solid #ccc;
+}
+
+.table tbody td:first-of-type {
+  text-align: center;
+}

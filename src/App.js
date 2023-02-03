@@ -1,23 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
+import useFetch from "./hooks/use-fetch";
+import Loading from "./components/Loading"
+import Table from "./components/Table";
+
+const baseUrl = 'https://jsonplaceholder.typicode.com'
 
 function App() {
+  const {data, loading} = useFetch(baseUrl,'posts');
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {loading ? <Loading/> : <Table data={data}/>}
     </div>
   );
 }

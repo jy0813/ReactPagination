@@ -1,0 +1,27 @@
+.loading-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(17,17,17,.8);
+}
+
+.loading-spinner {
+  display: block;
+  height: 10rem;
+  width: 10rem;
+  animation: spin .5s infinite linear;
+  border: 0.6rem #ccc solid;
+  border-left-color: orange;
+  border-radius: 100%;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
