@@ -7,11 +7,16 @@ import Pagination from './components/Pagination'
 const baseUrl = 'https://jsonplaceholder.typicode.com'
 
 function App() {
-  const {data, loading, currentPosts, dataPerPage, paginate} = useFetch(baseUrl,'posts');
+  const {data, loading, currentPosts, currentPage, prevPage, nextPage,firstPage, lastPage,dataPerPage, paginate} = useFetch(baseUrl,'posts');
   return (
     <div className="App">
       {loading ? <Loading/> : <Table data={currentPosts}/>}
         <Pagination
+            currentPage={currentPage}
+            firstPage={firstPage}
+            lastPage={lastPage}
+            prevPage={prevPage}
+            nextPage={nextPage}
             dataPerPage={dataPerPage}
             totalData={data?.length}
             paginate={paginate}

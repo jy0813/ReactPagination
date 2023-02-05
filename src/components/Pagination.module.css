@@ -3,7 +3,30 @@
   align-items: center;
   justify-content: center;
   margin: 3rem 0;
-  border: 0.1rem solid #ccc;
+}
+
+.pagination .prev,
+.pagination .next,
+.pagination .first,
+.pagination .last {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  border:0.1rem solid #ccc;
+}
+
+.pagination .prev {
+  margin-right: 2rem;
+  border-left:0;
+}
+
+.pagination .next {
+  margin-left: 2rem;
+  border-right: 0;
 }
 
 .pagination .list {
@@ -14,10 +37,16 @@
   height: 4rem;
   font-size: 1.6rem;
   font-weight: 500;
+  border:0.1rem solid #ccc;
+}
+
+.pagination .list[aria-current='active'] {
+  background: #ccc;
+  color:#fff;
 }
 
 .pagination .list + .list {
-  border-left: 0.1rem solid #ccc;
+  border-left: 0;
 }
 
 .pagination .list .btn {

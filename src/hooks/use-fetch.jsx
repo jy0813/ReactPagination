@@ -22,12 +22,16 @@ function useFetch(baseUrl, initialType) {
     const currentPosts = data?.slice(indexOfFirst, indexOfLast);
 
     const paginate = (pageNum) => setCurrentPage(pageNum)
+    const prevPage = () => setCurrentPage(prev => prev -1);
+    const nextPage = () => setCurrentPage(prev => prev +1);
+    const firstPage = (currentPage) => setCurrentPage(currentPage = 1);
+    const lastPage = (currentPage) => setCurrentPage(currentPage = Math.ceil(data.length / dataPerPage));
 
   useEffect(() => {
     fetchUrl(initialType);
   }, [])
 
-  return {data, loading, fetchUrl, currentPosts, paginate, dataPerPage}
+  return {data, loading, fetchUrl, currentPosts, currentPage, prevPage, nextPage, firstPage,lastPage, paginate, dataPerPage}
 }
 
 export default useFetch;
