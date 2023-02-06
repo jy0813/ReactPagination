@@ -13,15 +13,15 @@ function Pagination2({currentPage, totalPage, firstPage, lastPage, prev, next, f
   return (
     <div>
       <div className={styles.pagination}>
-        <button className={styles.first} onClick={first}>&#171;</button>
-        <button className={styles.prev} onClick={prev} disabled={currentPage === 1}>&lt;</button>
+        {firstPage === 1 ? null : <button className={styles.first} onClick={first}>&#171;</button>}
+        {firstPage === 1 ? null : <button className={styles.prev} onClick={prev}>&lt;</button>}
         {pageNumbers.map((num) =>
           <div className={styles.list} key={num} aria-current={currentPage === num ? 'active' : null}>
             <button className={styles.btn} onClick={() => paginate(num)}>{num}</button>
           </div>
         )}
-        <button className={styles.next} onClick={next} disabled={currentPage === totalPage}>&gt;</button>
-        <button className={styles.last} onClick={last}>&#187;</button>
+        {lastPage === totalPage ? null : <button className={styles.next} onClick={next} disabled={currentPage === totalPage}>&gt;</button>}
+        {lastPage === totalPage ? null : <button className={styles.last} onClick={last} disabled={currentPage === totalPage}>&#187;</button> }
       </div>
     </div>
   );
