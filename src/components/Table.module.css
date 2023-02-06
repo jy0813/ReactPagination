@@ -28,6 +28,9 @@
   padding: 1rem 1.2rem;
   font-size: 1.4rem;
   border:0.1rem solid #ccc;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .table tbody td:first-of-type {
