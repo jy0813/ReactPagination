@@ -13,7 +13,7 @@ function useSelect(initialKey, initialValue) {
     setSelectedItem([option])
     setIsShowOptions(prev => !prev);
   }
-  return [selectedItem, isShowOptions, defaultText, isShowSelect, value]
+  return {selectedItem, isShowOptions, defaultText, isShowSelect, value}
 }
 
 export default useSelect;

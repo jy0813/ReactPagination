@@ -27,7 +27,7 @@ const OPTION_LIST = [
 function DataPage(props) {
   const { data } = useAxios(BASE_URL,'posts')
   const {currentPage, totalPage, currentData, firstPage, lastPage, prev, next, first, last, paginate } = usePagination(data, 10, 5);
-  const [selectedItem, isShowOptions,defaultText, isShowSelect, value] = useSelect();
+  const {selectedItem, isShowOptions,defaultText, isShowSelect, value} = useSelect();
 
   return (
     <div className='App'>
