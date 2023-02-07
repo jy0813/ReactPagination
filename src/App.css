@@ -166,4 +166,14 @@ select::-ms-expand {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 120rem;
+  margin: 0 auto;
+}
+
+.flex-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 3rem 0;
 }

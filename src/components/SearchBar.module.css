@@ -1,0 +1,30 @@
+.search-wrap {
+  display: flex;
+  justify-content: flex-end;
+  width: 60rem;
+}
+
+.label {
+  width: 100%;
+  position: relative;
+  height: 4.4rem;
+  border: 0.1rem solid #ccc;
+}
+
+.search {
+  width: 100%;
+  height: 100%;
+  padding: 0 1.2rem;
+  font-size: 1.6rem;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 6rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  background-color: #ccc;
+  color:#fff;
+}
