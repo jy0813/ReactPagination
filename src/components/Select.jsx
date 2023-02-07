@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Select.module.css'
 import SelectItem from "./SelectItem";
 
-function Select({selectedItem, isShowOptions,defaultText, isShowSelect, value, optionList}) {
+function Select({selectedItem, isShowOptions,defaultText, isShowSelect, value, optionList, setViewData}) {
   return (
     <div className={styles['select-menu']}>
       <button className={styles['select-btn']} aria-controls='custom-select' aria-haspopup="true"
@@ -12,7 +12,7 @@ function Select({selectedItem, isShowOptions,defaultText, isShowSelect, value, o
       </button>
       {isShowOptions && <ul className={styles.options} id='custom-select' role='listbox'>
         {optionList.map((option) =>
-          <SelectItem key={option.key} option={option} selected={value}/>
+          <SelectItem key={option.key} option={option} selected={value} setViewData={setViewData}/>
         )}
       </ul>}
     </div>

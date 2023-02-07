@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styles from './Pagination.module.css'
 
 function Pagination({dataPerPage, currentPage, prevPage, nextPage, firstPage,lastPage, totalData, paginate}) {
@@ -6,6 +6,7 @@ function Pagination({dataPerPage, currentPage, prevPage, nextPage, firstPage,las
   for (let i = 1; i <= Math.ceil(totalData / dataPerPage); i++) {
     pageNumbers.push(i);
   }
+
   return (
       <div>
         <div className={styles.pagination}>

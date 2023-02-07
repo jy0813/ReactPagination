@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
-function useSelect(initialKey, initialValue) {
-  const defaultText = '10개'
+function useSelect(initialValue) {
+  const defaultText = initialValue
   const [isShowOptions, setIsShowOptions] = useState(false);
-  const [selectedItem, setSelectedItem] = useState([]);
+  const [selectedItem, setSelectedItem] = useState({});
 
   const isShowSelect = () => {
     setIsShowOptions(prev => !prev)

@@ -33,9 +33,6 @@ function usePagination(data, setViewData,setPageGroup) {
 
   const paginate = (pageNum) => setCurrentPage(pageNum)
 
-
-
-
   return { currentPage, totalPage, firstPage, lastPage, currentData, prev, next, first, last, paginate}
 }
 

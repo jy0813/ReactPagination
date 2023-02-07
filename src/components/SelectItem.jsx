@@ -1,9 +1,15 @@
 import React from 'react';
 import styles from "./Select.module.css";
 
-function SelectItem({option, selected}) {
+function SelectItem({option, selected, setViewData}) {
+
+  const changeData = () => {
+    selected(option)
+    setViewData(option.key)
+  }
+
   return (
-      <li className={styles.option} onClick={() => selected(option)}>
+      <li className={styles.option} onClick={changeData}>
         <button className={styles['option-text']}>{option.value}</button>
       </li>
   );

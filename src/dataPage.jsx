@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Table from "./components/Table";
 import './App.css';
 import Pagination2 from "./components/Pagination2";
@@ -11,23 +11,25 @@ import useSelect from "./hooks/use-select";
 const BASE_URL = 'https://jsonplaceholder.typicode.com'
 const OPTION_LIST = [
   {
-    key: '10',
+    key: 10,
     value: '10개'
   },
   {
-    key: '20',
+    key: 20,
     value: '20개'
   },
   {
-    key: '50',
+    key: 50,
     value: '50개'
   },
 ]
 
 function DataPage(props) {
+  const [viewData, setViewData] = useState(10);
+  const [pageGroup, setPageGroup] = useState(5);
   const { data } = useAxios(BASE_URL,'posts')
-  const {currentPage, totalPage, currentData, firstPage, lastPage, prev, next, first, last, paginate } = usePagination(data, 10, 5);
-  const {selectedItem, isShowOptions,defaultText, isShowSelect, value} = useSelect();
+  const {currentPage, totalPage, currentData, firstPage, lastPage, prev, next, first, last, paginate } = usePagination(data, viewData, pageGroup);
+  const {selectedItem, isShowOptions,defaultText, isShowSelect, value} = useSelect(OPTION_LIST[0].value);
 
   return (
     <div className='App'>
@@ -40,6 +42,7 @@ function DataPage(props) {
           defaultText={defaultText}
           isShowSelect={isShowSelect}
           value={value}
+          setViewData={setViewData}
         />
       </div>
       <Table data={currentData}/>
