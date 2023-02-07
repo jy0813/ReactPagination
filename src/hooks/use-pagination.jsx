@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function usePagination(data, setViewData,setPageGroup) {
+
   // 현재 페이지 setting
   const [currentPage, setCurrentPage] = useState(1);
   // 전체 페이지 setting
@@ -32,6 +33,11 @@ function usePagination(data, setViewData,setPageGroup) {
   const last = () => setCurrentPage(Math.ceil(data.length / setViewData));
 
   const paginate = (pageNum) => setCurrentPage(pageNum)
+
+  useEffect(() => {
+    setCurrentPage(1)
+  },[totalPage])
+
 
   return { currentPage, totalPage, firstPage, lastPage, currentData, prev, next, first, last, paginate}
 }

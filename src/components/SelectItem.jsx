@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from "./Select.module.css";
 
-function SelectItem({option, selected, setViewData}) {
 
+function SelectItem({option, selected, setViewData}) {
   const changeData = () => {
     selected(option)
     setViewData(option.key)
