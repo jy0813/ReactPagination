@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Table from "./components/Table";
 import './App.css';
 import Pagination2 from "./components/Pagination2";
@@ -7,6 +7,7 @@ import useAxios from "./hooks/use-axios";
 import SearchBar from "./components/SearchBar";
 import Select from "./components/Select";
 import useSelect from "./hooks/use-select";
+import useSearch from "./hooks/use-search";
 
 const BASE_URL = 'https://jsonplaceholder.typicode.com'
 const OPTION_LIST = [
@@ -30,11 +31,21 @@ function DataPage(props) {
   const { data } = useAxios(BASE_URL,'posts')
   const {currentPage, totalPage, currentData, firstPage, lastPage, prev, next, first, last, paginate } = usePagination(data, viewData, pageGroup);
   const {selectedItem, isShowOptions,defaultText, isShowSelect, value} = useSelect(OPTION_LIST[0].value);
+  const {inputValue, inputRef, searchData, searchInputValue, searchInit, searchEvent} = useSearch(data, '');
+
+
 
   return (
     <div className='App'>
       <div className='flex-row'>
-        <SearchBar/>
+        <SearchBar
+          inputValue={inputValue}
+          inputRef={inputRef}
+          searchInputValue={searchInputValue}
+          searchInit={searchInit}
+          searchEvent={searchEvent}
+          searchData={searchData}
+        />
         <Select
           optionList={OPTION_LIST}
           selectedItem={selectedItem}
