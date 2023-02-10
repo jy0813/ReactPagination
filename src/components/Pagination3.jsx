@@ -1,13 +1,10 @@
 import styles from './Pagination.module.css'
+import usePagination2 from "../hooks/use-pagination2";
 
 
-function Pagination2({currentPage, totalPage, firstPage, lastPage, prev, next, first, last, paginate}) {
+function Pagination3({setCurrentPage,currentPage, totalPage, firstPage, lastPage}) {
 
-  const pageNumbers = [];
-
-  for(let i = firstPage; i <= lastPage; i++) {
-    pageNumbers.push(i)
-  }
+  const {pageNumbers, prev, next, first, last, paginate} = usePagination2(setCurrentPage, totalPage, firstPage, lastPage)
 
   return (
     <div>
@@ -19,11 +16,11 @@ function Pagination2({currentPage, totalPage, firstPage, lastPage, prev, next, f
             <button className={styles.btn} onClick={() => paginate(num)}>{num}</button>
           </div>
         )}
-        {lastPage === totalPage ? null : <button className={styles.next} onClick={next} disabled={currentPage === totalPage}>&gt;</button>}
-        {lastPage === totalPage ? null : <button className={styles.last} onClick={last} disabled={currentPage === totalPage}>&#187;</button> }
+        {lastPage === totalPage ? null : <button className={styles.next} onClick={next}>&gt;</button>}
+        {lastPage === totalPage ? null : <button className={styles.last} onClick={last}>&#187;</button>}
       </div>
     </div>
   );
 }
 
-export default Pagination2;
+export default Pagination3;
