@@ -2,7 +2,7 @@ import './App.css';
 import useAxios from "./hooks/use-axios";
 import Table from "./components/Table";
 import Pagination3 from "./components/Pagination3";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import SearchBar from "./components/SearchBar";
 import Select2 from "./components/Select2";
 
