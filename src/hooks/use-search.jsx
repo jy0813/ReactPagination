@@ -1,17 +1,14 @@
 
-function useSearch(initialValue, setSearchValue) {
+function useSearch() {
 
-
-
-  const searchInputValue = (e) => {
-    setSearchValue(e.target.value)
+  const onEnter = (e, searchEvent) => {
+    if(e.key === 'Enter') {
+      searchEvent();
+    }
   }
 
-  const searchInit = () => {
-    setSearchValue('')
-  }
 
-  return {searchInputValue, searchInit}
+  return {onEnter}
 }
 
 export default useSearch;

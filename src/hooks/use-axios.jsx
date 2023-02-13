@@ -15,7 +15,7 @@ function useAxios(baseUrl, initialType) {
     getData(initialType).catch((err) => console.log(err));
   },[getData, initialType])
 
-  return [data, setData];
+  return data;
 }
 
 export default useAxios;
