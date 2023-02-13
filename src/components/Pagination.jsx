@@ -1,24 +1,25 @@
-import React, {useEffect} from 'react';
 import styles from './Pagination.module.css'
+import usePagination from "../hooks/use-pagination";
 
-function Pagination({dataPerPage, currentPage, prevPage, nextPage, firstPage,lastPage, totalData, paginate}) {
-  const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(totalData / dataPerPage); i++) {
-    pageNumbers.push(i);
-  }
+
+function Pagination({setCurrentPage,currentPage, totalPage, firstPage, lastPage}) {
+
+  const {pageNumbers, prev, next, first, last, paginate} = usePagination(setCurrentPage, totalPage, firstPage, lastPage)
 
   return (
-      <div>
-        <div className={styles.pagination}>
-          <button className={styles.first} onClick={firstPage} disabled={currentPage === 1}>&#171;</button>
-          <button className={styles.prev} onClick={prevPage} disabled={currentPage === 1}>&lt;</button>
-          {pageNumbers.map(num => <div className={styles.list} key={num} aria-current={currentPage === num ? 'active' : null}>
+    <div>
+      <div className={styles.pagination}>
+        {firstPage === 1 ? null : <button className={styles.first} onClick={first}>&#171;</button>}
+        {firstPage === 1 ? null : <button className={styles.prev} onClick={prev}>&lt;</button>}
+        {pageNumbers.map((num) =>
+          <div className={styles.list} key={num} aria-current={currentPage === num ? 'active' : null}>
             <button className={styles.btn} onClick={() => paginate(num)}>{num}</button>
-          </div>)}
-          <button className={styles.next} onClick={nextPage} disabled={currentPage === pageNumbers[pageNumbers.length -1]}>&gt;</button>
-          <button className={styles.last} onClick={lastPage} disabled={currentPage === pageNumbers[pageNumbers.length -1]}>&#187;</button>
-        </div>
+          </div>
+        )}
+        {lastPage === totalPage ? null : <button className={styles.next} onClick={next}>&gt;</button>}
+        {lastPage === totalPage ? null : <button className={styles.last} onClick={last}>&#187;</button>}
       </div>
+    </div>
   );
 }
 

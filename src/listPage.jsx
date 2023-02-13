@@ -1,10 +1,10 @@
 import './App.css';
 import useAxios from "./hooks/use-axios";
 import Table from "./components/Table";
-import Pagination3 from "./components/Pagination3";
+import Pagination from "./components/Pagination";
 import { useEffect, useState } from "react";
 import SearchBar from "./components/SearchBar";
-import Select2 from "./components/Select2";
+import Select from "./components/Select";
 
 const BASE_URL = 'https://jsonplaceholder.typicode.com'
 const OPTION_LIST = [
@@ -72,13 +72,13 @@ function ListPage(props) {
           searchEvent={searchEvent}
           searchInit={searchInit}
         />
-        <Select2
+        <Select
           optionList={OPTION_LIST}
           setViewData={setViewData}
         />
       </div>
       <Table data={slicedList(renderList)}/>
-      <Pagination3
+      <Pagination
         setCurrentPage={setCurrentPage}
         currentPage={currentPage}
         totalPage={totalPage}
