@@ -23,7 +23,8 @@ const OPTION_LIST = [
 ]
 
 function ListPage(props) {
-  const data = useAxios(BASE_URL,'posts')
+  const [data, setData] = useAxios(BASE_URL,'posts')
+  const copyData = data?.map(data => data);
   const [currentPage, setCurrentPage] = useState(1);
   const [viewData, setViewData] = useState(10);
   const [viewPage] = useState(5);
@@ -35,8 +36,8 @@ function ListPage(props) {
 
 
   const searchEvent = () => {
-    const search = data?.filter(item => item.title.toUpperCase().includes(searchValue.toUpperCase()) || item.body.toUpperCase().includes(searchValue.toUpperCase()))
-    console.log(search);
+    const search = copyData?.filter(item => item.title.toUpperCase().includes(searchValue.toUpperCase()) || item.body.toUpperCase().includes(searchValue.toUpperCase()))
+    setData(search)
   }
 
 
@@ -61,7 +62,7 @@ function ListPage(props) {
           setViewData={setViewData}
         />
       </div>
-      <Table data={slicedList(data)}/>
+      <Table data={slicedList(copyData)}/>
       <Pagination3
         setCurrentPage={setCurrentPage}
         currentPage={currentPage}

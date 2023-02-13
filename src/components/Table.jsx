@@ -13,7 +13,7 @@ function Table({data}) {
       </tr>
       </thead>
       <tbody>
-      {data?.map((post) => <TableItem key={post.id} id={post.id} title={post.title} body={post.body} />)}
+      {data?.length === 0 ? <tr><td colSpan="3">데이터가 없습니다.</td></tr> : data?.map((post) => <TableItem key={post.id} id={post.id} title={post.title} body={post.body} />)}
       </tbody>
     </table>
   );
