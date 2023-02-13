@@ -36,8 +36,7 @@ function ListPage(props) {
 
   const searchEvent = () => {
     const search = data?.filter(item => item.title.toUpperCase().includes(searchValue.toUpperCase()) || item.body.toUpperCase().includes(searchValue.toUpperCase()))
-    slicedList(search)
-    console.log(slicedList(search))
+    console.log(search);
   }
 
 
