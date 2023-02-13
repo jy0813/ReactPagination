@@ -8,7 +8,6 @@ function useAxios(baseUrl, initialType) {
   const getData = useCallback(async (type) => {
     const response = await axios.get(`${baseUrl}/${type}`)
     setData(response.data);
-
   },[baseUrl])
 
   useEffect(() => {

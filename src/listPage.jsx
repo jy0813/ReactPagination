@@ -22,7 +22,7 @@ const OPTION_LIST = [
   },
 ]
 
-function ListPage(props) {
+function ListPage() {
   const data = useAxios(BASE_URL,'posts')
   const [renderList, setViewData, setCurrentPage, currentPage, totalPage, firstPage, lastPage, searchValue, setSearchValue,  searchEvent, searchInit, slicedList] = useListPage(data)
 

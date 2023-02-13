@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 function useListPage(data) {
 
   const [renderList, setRenderList] = useState([]);
+  const [searchValue, setSearchValue] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [viewData, setViewData] = useState(10);
   const [viewPage] = useState(5);
@@ -10,7 +11,17 @@ function useListPage(data) {
   const pageGroup = Math.ceil(currentPage / viewPage);
   const lastPage = pageGroup * viewPage > totalPage ? totalPage : pageGroup * viewPage;
   const firstPage = lastPage - (viewPage - 1) <= 0 ? 1 : lastPage - (viewPage - 1);
-  const [searchValue, setSearchValue] = useState('');
+
+  useEffect(() => {
+    setRenderList(data)
+  },[data])
+
+  const slicedList = (data) => {
+    const startIndex = (currentPage - 1) * viewData
+    const endIndex = startIndex + viewData
+    return data?.slice(startIndex, endIndex)
+  }
+
 
   const searchEvent = () => {
     const search = [...data]?.filter(item => item.title.toUpperCase().includes(searchValue.toUpperCase()) || item.body.toUpperCase().includes(searchValue.toUpperCase()))
@@ -23,21 +34,8 @@ function useListPage(data) {
 
   const searchInit = () => {
     setSearchValue('')
-    setCurrentPage(1);
     setRenderList(data);
   }
-
-
-
-  const slicedList = (data) => {
-    const startIndex = (currentPage - 1) * viewData
-    const endIndex = startIndex + viewData
-    return data?.slice(startIndex, endIndex)
-  }
-
-  useEffect(() => {
-    setRenderList(data)
-  },[data])
 
 
   return [renderList, setViewData, setCurrentPage, currentPage,  totalPage, firstPage, lastPage, searchValue, setSearchValue,  searchEvent, searchInit, slicedList];
