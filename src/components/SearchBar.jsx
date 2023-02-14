@@ -2,7 +2,7 @@ import styles from './SearchBar.module.css'
 import useSearch from "../hooks/use-search";
 
 function SearchBar({setSearchValue, searchValue, searchEvent, searchInit}) {
-  const {onEnter} = useSearch('', setSearchValue)
+  const onEnter = useSearch()
   return (
     <div className={styles['search-wrap']}>
       <label className={styles.label}>
